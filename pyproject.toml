@@ -2,7 +2,7 @@
 name = "app"
 version = "0.1"
 description = "fastAPI boilerplate"
-authors = ["Raheel Siddiqui"]
+authors = ["Kazi Naimul Hoque"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
