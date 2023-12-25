@@ -1,12 +1,9 @@
 <h1 align="center"> 
-🍲  FastAPI Boilerplate
+FastAPI Boilerplate
 </h1>
 
-<h2 align="center">
-  The simplest production ready Django like FastAPI boilerplate 🐍
-</h2>
 
-<img src="https://github.com/rawheel/fastapi-boilerplate/blob/main/media/fastapi%20boilerplate%20cover.png" alt="fastapi boilerplate">
+This boilerplate is based on this <a href="https://github.com/rawheel/fastapi-boilerplate">rawheel/fastapi-boilerplate</a>
 
 ---
 
@@ -59,13 +56,7 @@ docker-compose up
 # 🎉 Your Production Ready FastAPI CRUD backend app is up and running on `localhost:8000`
 
 - Swagger docs on `localhost:8000/docs`
-<img src="https://github.com/rawheel/fastapi-boilerplate/blob/main/media/swagger%20docs.png" alt="fastapi boilerplate">
-
-- GET request example
-
-<img src="https://github.com/rawheel/fastapi-boilerplate/blob/main/media/swagger%20get%20docs.png" alt="fastapi boilerplate">
 
 
 - PgAdmin on `localhost:5050`
 
-<img src="https://github.com/rawheel/fastapi-boilerplate/blob/main/media/pgadmin.png" alt="fastapi boilerplate">
