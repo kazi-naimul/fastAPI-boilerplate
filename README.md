@@ -1,62 +1,57 @@
-<h1 align="center"> 
-FastAPI Boilerplate
-</h1>
+# Welcome to FastAPI Boilerplate
 
+Ready to kickstart your FastAPI project? Look no further! This boilerplate offers you a robust foundation for building powerful applications.
 
-This boilerplate is based on this <a href="https://github.com/rawheel/fastapi-boilerplate">rawheel/fastapi-boilerplate</a>
+## Key Highlights
 
----
+✅ Docker Compose for seamless production setup. \
+✅ Local Dockerized database for convenient development. \
+✅ PgAdmin Docker container for easy database inspection. \
+✅ Migrations, Serializers, and ORM configurations ready to roll. \
+✅ Token Authentication for secure endpoints. \
+✅ Logging Mechanism for effective debugging. \
+✅ Pytest for Test-Driven Development (TDD). \
+✅ Separate SQLite database and mock sessions for testing. \
+✅ Poetry for hassle-free dependency management and packaging.
 
-# 💎 Features
+## Powered by These Technologies
 
-✅ Production ready with one docker-compose command. \
-✅ Similar to Django Code Structure. \
-✅ Local dockerized db.\
-✅ Dockerized PgAdmin to check the db records.\
-✅ Migrations, Serializers and ORM configured.\
-✅ CRUD APIs (Sneaker App).\
-✅ Token Authentication.\
-✅ Logging Mechanism.\
-✅ Testcases TDD with Pytest. \
-✅ Seperate Database(Sqlite) and mock session configured for test cases.\
-✅ Poetry dependency management and packaging made easy. (Better than pip)
+- **Alembic:** Simplifying database migrations.
+- **SQLAlchemy:** Trustworthy ORM capabilities.
+- **Pydantic:** Handling typing and serialization with ease.
+- **Pytest:** Empowering Test-Driven Development (TDD).
+- **Poetry:** The smarter choice for dependency management.
+- **Docker & docker-compose:** Virtualization for efficient development.
+- **PostgreSQL:** A robust relational database system.
+- **PgAdmin:** Your ally for efficient database management.
+- **Loguru:** The simplest logging solution.
 
+## Quick Setup
 
-# ⚒️ Techologies Used
+1. Create a `.env` file in the root folder (`fastapi-boilerplate/.env`):
 
-- Alembic: For Database Migrations.
-- SQLAlchemy: For ORM.
-- Pydantic: For Typing or Serialization.
-- Pytests: For TDD or Unit Testing.
-- Poetry: Python dependency management and packaging made easy. (Better than pip)
-- Docker & docker-compose : For Virtualization.
-- postgresSQL: Database.
-- PgAdmin: To interact with the Postgres database sessions.
-- Loguru: Easiest logging ever done.
+    ```env
+    DATABASE_URL=postgresql+psycopg2://postgres:password@db:5432/boiler_plate_db
+    DB_USER=postgres
+    DB_PASSWORD=password
+    DB_NAME=boiler_plate_db
+    PGADMIN_EMAIL=admin@admin.com
+    PGADMIN_PASSWORD=admin
+    X_TOKEN=12345678910
+    ```
 
-# 🚀 Up and run in 5 mins 🕙
-Make sure you have docker and docker-compose installed [docker installation guide](https://docs.docker.com/compose/install/)
-## Step 1
-create **.env** file in root folder fastapi-boilerplate/.env
-```
-DATABASE_URL=postgresql+psycopg://postgres:password@db:5432/boiler_plate_db
-DB_USER=postgres
-DB_PASSWORD=password
-DB_NAME=boiler_plate_db 
-PGADMIN_EMAIL=admin@admin.com
-PGADMIN_PASSWORD=admin
-X_TOKEN=12345678910
-```
+2. Launch Docker Compose:
 
-## Step 2
-```
-docker-compose up
-```
+    ```bash
+    docker-compose up
+    ```
 
-# 🎉 Your Production Ready FastAPI CRUD backend app is up and running on `localhost:8000`
+## 🎉 Get started with your FastAPI CRUD backend at `localhost:8000`.
 
-- Swagger docs on `localhost:8000/docs`
+- Discover Swagger docs at `localhost:8000/docs`.
+- Dive into PgAdmin at `localhost:5050`.
 
+Feel free to tailor and tweak this boilerplate to suit your FastAPI project needs!
 
-- PgAdmin on `localhost:5050`
-
+# Acknowledgments
+A big shoutout to the original <a href="https://github.com/rawheel/fastapi-boilerplate">rawheel/fastapi-boilerplate</a> for providing the initial inspiration. The foundation laid by the original repository has been instrumental in shaping this customized boilerplate.

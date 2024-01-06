@@ -27,7 +27,7 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 
 from src.db.session import Base
-from src.modules.sneakers.models import Sneaker 
+from src.db.models.sneaker import Sneaker 
 
 target_metadata = Base.metadata
 

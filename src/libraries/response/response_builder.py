@@ -1,4 +1,5 @@
 from typing import List, Optional, Union
+from fastapi import HTTPException
 
 class ApiServiceResponse:
     def __init__(
@@ -49,7 +50,16 @@ class ResponseBuilder:
     def build(self):
         response = self.response
         self.reset()
+        if not response.status:
+            raise HTTPException(status_code=response.code, detail={
+                    'status': response.status,
+                    'code': response.code,
+                    'message': response.message,
+                    'errors': response.errors
+                },
+                headers={"Content-Type": "application/json"})
         return response
+
 
     def reset(self):
         self.response = ApiServiceResponse(

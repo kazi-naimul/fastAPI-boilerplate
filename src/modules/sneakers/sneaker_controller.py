@@ -39,7 +39,7 @@ async def add_sneaker(payload: SneakerSchema, db: Session = Depends(get_db)):
     return sneaker_service.add_sneaker(payload)
 
 
-@router.put("/sneakers/{sneaker_id}", status_code=201)
+@router.put("/sneakers/{sneaker_id}", status_code=200)
 async def update_sneaker(
     sneaker_id: int, payload: SneakerSchema, db: Session = Depends(get_db)
 ):
@@ -51,28 +51,14 @@ async def update_sneaker(
         HTTPException: 404 if sneaker id is not found in the db
 
     Returns:
-        object: updated sneaker object with 201 status code
+        object: updated sneaker object with 200 status code
     """
-
-    sneaker = db.query(SneakerModel).filter(SneakerModel.id == sneaker_id).first()
-    if not sneaker:
-        desc = "Sneaker not found"
-        logger.error(desc)
-        raise HTTPException(status_code=404, detail=desc)
-
-    sneaker.brand_name = payload.brand_name
-    sneaker.name = payload.name
-    sneaker.description = payload.description
-    sneaker.size = payload.size
-    sneaker.color = payload.color
-    sneaker.free_delivery = payload.free_delivery
-    db.commit()
-
-    logger.success("Updated a sneaker.")
-    return sneaker
+    sneaker_service = SneakerService(db)
+    return sneaker_service.update_sneaker(sneaker_id, payload)
 
 
-@router.delete("/sneakers/{sneaker_id}", status_code=204)
+
+@router.delete("/sneakers/{sneaker_id}", status_code=200)
 async def delete_sneaker(sneaker_id: int, db: Session = Depends(get_db)):
     """
     Deletes the sneaker object from db
@@ -81,17 +67,8 @@ async def delete_sneaker(sneaker_id: int, db: Session = Depends(get_db)):
         HTTPException: 404 if sneaker id is not found in the db
 
     Returns:
-        Object: Deleted true with 204 status code
+        Object: Deleted true with 200 status code
     """
 
-    sneaker = db.query(SneakerModel).filter(SneakerModel.id == sneaker_id).first()
-    if not sneaker:
-        desc = "Sneaker not found"
-        logger.error(desc)
-        raise HTTPException(status_code=404, detail=desc)
-    db.delete(sneaker)
-    db.commit()
-
-    logger.success("Deleted a sneaker.")
-
-    return {"Deleted": True}
+    sneaker_service = SneakerService(db)
+    return sneaker_service.delete_sneaker(sneaker_id)

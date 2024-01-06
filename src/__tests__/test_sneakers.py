@@ -89,13 +89,13 @@ def test_update_sneaker():
     """
 
     updated_payload = PAYLOAD.copy()
-    updated_payload["brand_name"] = "rawheel"
+    updated_payload["brand_name"] = "XYZ"
     response = client.put(
         f"{ENDPOINT}/{LAST_RECORD_ID}", json=updated_payload, headers=HEADERS
     )
 
     # validates if the request was successfull
-    assert response.status_code == 201
+    assert response.status_code == 200
 
 
 def test_invalid_update_sneaker():
@@ -105,7 +105,7 @@ def test_invalid_update_sneaker():
     """
 
     updated_payload = PAYLOAD.copy()
-    updated_payload["brand_name"] = "rawheel"
+    updated_payload["brand_name"] = "XYZ"
     response = client.put(f"{ENDPOINT}/12345", json=updated_payload, headers=HEADERS)
 
     # validates if the it threw an error on invalid id

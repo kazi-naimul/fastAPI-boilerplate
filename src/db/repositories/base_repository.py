@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from src.db.session import get_db
-from sqlalchemy import update
+from sqlalchemy import update, and_
 from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.dialects.postgresql import insert
@@ -77,13 +77,26 @@ class BaseRepository:
 
     def delete_by_where(self, where: dict):
         try:
-            stmt = self.model.__table__.delete().where(**where)
+            # Check if the where dictionary is not empty
+            if not where:
+                raise ValueError("Empty 'where' dictionary")
+
+            # Verify that all keys in the where dictionary exist in the model
+            invalid_keys = set(where.keys()) - set(self.model.__table__.columns.keys())
+            if invalid_keys:
+                raise ValueError(f"Invalid keys in 'where' dictionary: {invalid_keys}")
+
+            # Construct the delete statement using and_ to concatenate conditions
+            conditions = [getattr(self.model, key) == value for key, value in where.items()]
+            stmt = self.model.__table__.delete().where(and_(*conditions))
+            
             self.db.execute(stmt)
             self.db.commit()
             return True
         except SQLAlchemyError as e:
             self.db.rollback()
             raise e
+
 
     def bulk_create(self, data_list: List[dict]):
         try:
