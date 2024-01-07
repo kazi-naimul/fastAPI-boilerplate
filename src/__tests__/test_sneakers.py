@@ -95,7 +95,7 @@ def test_update_sneaker():
     )
 
     # validates if the request was successfull
-    assert response.status_code == 200
+    assert response.status_code == 201
 
 
 def test_invalid_update_sneaker():
